@@ -3,17 +3,16 @@
 
 int main() {
 
-	int to_server;
-	int from_server;
+	int server_socket;
 
-	from_server = client_handshake( &to_server );
+	server_socket = client_connect();
 
 	char buffer[BUFFER_SIZE];
     while(fgets(buffer, sizeof(buffer), stdin)) {
 		// printf("%s\n", buffer);
-        write(to_server, buffer, sizeof(buffer));
+        write(server_socket, buffer, sizeof(buffer));
         char s[BUFFER_SIZE];
-        read(from_server, s, sizeof(s));
+        read(server_socket, s, sizeof(s));
 
         printf("%s\n", s);
     }

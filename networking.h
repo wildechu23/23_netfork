@@ -23,4 +23,6 @@
 int server_setup();
 int server_connect(int from_client);
 
+int client_connect();
+
 #endif
